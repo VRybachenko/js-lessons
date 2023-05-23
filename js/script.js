@@ -1,26 +1,41 @@
 "use strict";
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+if (4 === 9) {
+    console.log('Ok!')
+} else {
+    console.log('Error')
+}
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: {},
-    private: false
-};
+const num = 50;
 
-const a = prompt('Один из последних просмотренных фильмов?', ''),
-    b = prompt('На сколько оцените его?', ''),
-    c = prompt('Один из последних просмотренных фильмов?', ''),
-    d = prompt('На сколько оцените его?', '');
+if (num < 49) {
+    console.log("Error");
+} else if (num > 100) {
+    console.log("A lot!")
+} else {
+    console.log("Ok!")
+}
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
-
-console.log(personalMovieDB);
+//Тернарный оператор
+(num === 50) ? console.log("Ok!") : console.log("Error");
 
 
+switch (num) {
+    case 49:
+        console.log("Wrong!")
+        break;
+    case 100:
+        console.log("Wrong!")
+        break;
+    case 50:
+        console.log("Correct!")
+        break;
+    default:
+        console.log("Not this time!")
+        break;
+
+
+}
 
 
 
