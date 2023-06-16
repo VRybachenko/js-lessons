@@ -1,7 +1,5 @@
 "use strict";
 
-//const obj = new Object();
-
 const option = {
     name: "test",
     width: 1024,
@@ -18,16 +16,17 @@ console.log(option.colors.border);
 //
 // console.log(option);
 
+let counter = 0;
 for (let key in option) {
     if(typeof (option[key]) === "object") {
         for (let i in option[key]){
             console.log(`Свойство ${i} имеет значение ${option[key][i]}`);
+            counter ++;
         }
     } else {
         console.log(`Свойство ${key} имеет значение ${option[key]}`);
+        counter ++;
     }
 }
 
-// for (let key of option) {
-//     console.log(`Свойство ${key} имеет значение ${option[key]}`);
-// }
+console.log(counter)
