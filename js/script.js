@@ -1,6 +1,6 @@
 "use strict";
 
-const option = {
+const options = {
     name: "test",
     width: 1024,
     height: 1024,
@@ -10,23 +10,20 @@ const option = {
     }
 }
 
-console.log(option.colors.border);
-//
-// delete option.name;
-//
-// console.log(option);
+console.log(options.colors.border);
 
 let counter = 0;
-for (let key in option) {
-    if(typeof (option[key]) === "object") {
-        for (let i in option[key]){
-            console.log(`Свойство ${i} имеет значение ${option[key][i]}`);
+for (let key in options) {
+    if(typeof (options[key]) === "object") {
+        for (let i in options[key]){
+            console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
             counter ++;
         }
     } else {
-        console.log(`Свойство ${key} имеет значение ${option[key]}`);
+        console.log(`Свойство ${key} имеет значение ${options[key]}`);
         counter ++;
     }
 }
 
-console.log(counter)
+console.log(Object.keys(options))
+console.log(Object.keys(options).length)
