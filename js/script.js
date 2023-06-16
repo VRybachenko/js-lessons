@@ -1,41 +1,33 @@
 "use strict";
 
-if (4 === 9) {
-    console.log('Ok!')
-} else {
-    console.log('Error')
+//const obj = new Object();
+
+const option = {
+    name: "test",
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: "black",
+        bg: "red"
+    }
 }
 
-const num = 50;
+console.log(option.colors.border);
+//
+// delete option.name;
+//
+// console.log(option);
 
-if (num < 49) {
-    console.log("Error");
-} else if (num > 100) {
-    console.log("A lot!")
-} else {
-    console.log("Ok!")
+for (let key in option) {
+    if(typeof (option[key]) === "object") {
+        for (let i in option[key]){
+            console.log(`Свойство ${i} имеет значение ${option[key][i]}`);
+        }
+    } else {
+        console.log(`Свойство ${key} имеет значение ${option[key]}`);
+    }
 }
 
-//Тернарный оператор
-(num === 50) ? console.log("Ok!") : console.log("Error");
-
-
-switch (num) {
-    case 49:
-        console.log("Wrong!")
-        break;
-    case 100:
-        console.log("Wrong!")
-        break;
-    case 50:
-        console.log("Correct!")
-        break;
-    default:
-        console.log("Not this time!")
-        break;
-
-
-}
-
-
-
+// for (let key of option) {
+//     console.log(`Свойство ${key} имеет значение ${option[key]}`);
+// }
