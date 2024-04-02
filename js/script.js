@@ -1,33 +1,21 @@
 "use strict";
 
+const arr = ["a", "b", "c"];
+arr[10] = "1234";
+console.log(arr)
 
-let str = "some";
-let strObj = new String(str);
+const arrObj = {
+    0: "a",
+    1: "b",
+    2: "c",
+    abc: {
+        def: {
 
-// console.log(typeof(str));
-// console.log(typeof(strObj))
-
-//console.dir([1, 2, 3]);
-
-
-const soldier = {
-    health: 400,
-    armor: 100,
-    sayHello: function () {
-        console.log("Hello")
+        }
     }
-};
+}
 
-const john = Object.create(soldier);
+arrObj.b = "1234";
+arrObj["b"] = "1234"
 
-// const john = {
-//     health: 100
-// }
-
-//Старий способ который уже депрекейтнутий
-//john.__proto__ = soldier;
-
-Object.setPrototypeOf(john, soldier);
-
-console.log(john.armor);
-john.sayHello();
+console.log(arrObj.b);
