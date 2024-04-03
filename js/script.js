@@ -1,21 +1,9 @@
 "use strict";
 
-const arr = ["a", "b", "c"];
-arr[10] = "1234";
-console.log(arr)
+const category = "toys";
 
-const arrObj = {
-    0: "a",
-    1: "b",
-    2: "c",
-    abc: {
-        def: {
+console.log(`https://someurl.com/${category}/5`)
 
-        }
-    }
-}
+const user = "Vadym";
 
-arrObj.b = "1234";
-arrObj["b"] = "1234"
-
-console.log(arrObj.b);
+alert(`Hello, ${user}`);
