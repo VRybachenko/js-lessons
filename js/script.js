@@ -1,44 +1,34 @@
 'use strict';
 
-let num = 20;
+const usdCurr = 28;
+const eurCurr = 32;
+const discount = 0.9;
 
-function showFirstMessage(text) {
-    console.log(text);
-    let num = 10;
-    console.log(num);
+function convert(amount, curr) {
+    return curr * amount;
 }
 
-showFirstMessage("Hello World!");
-console.log(num);
-
-function calc(a, b) {
-    return (a + b);
+function promotion(result) {
+    console.log(result * discount);
 }
 
-// console.log(calc(5, 5))
-// console.log(calc(5, 4));
-// console.log(calc(5, 3));
+const res = convert(500, usdCurr);
+promotion(res);
 
-function ret() {
-    let num = 50;
-    return num;
+
+function test() {
+    for (let i = 0; i < 5; i++) {
+        console.log(i);
+        if (i === 3) {
+            return;
+        }
+    }
+    console.log("done");
 }
 
-const anotherNum = ret() + 50;
-console.log(anotherNum);
+test();
 
 
-const logger = function () {
-    console.log("Hello");
-};
+function doNothing() {};
 
-logger();
-
-const calc = (a, b) => a + b;
-
-
-
-
-
-
-
+console.log(doNothing() === undefined);
