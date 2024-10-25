@@ -1,50 +1,55 @@
 'use strict';
 
-// let number = 5; debugger
-//
-// function logNumber() {
-//     console.log(number); debugger
-// }
-//
-// number = 6;
-// logNumber(); debugger
-//
-// number = 8;
-// logNumber(); debugger
+const restorantData = {
+    menu: [
+        {
+            name: 'Salad Caesar',
+            price: '14$'
+        },
+        {
+            name: 'Pizza Diavola',
+            price: '9$'
+        },
+        {
+            name: 'Beefsteak',
+            price: '17$'
+        },
+        {
+            name: 'Napoleon',
+            price: '7$'
+        }
+    ],
+    waitors: [
+        {name: 'Alice', age: 22}, {name: 'John', age: 24}
+    ],
+    averageLunchPrice: '20$',
+    openNow: true
+};
 
-function createCounter() {
-    let counter = 0;
+function isOpen(prop) {
+    return prop ? 'Открыто' : 'Закрыто';
+}
 
-    const myFunction = function () { debugger
-        counter = counter + 1; debugger
-        return counter; debugger
+console.log(isOpen(restorantData.openNow))
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+    const price1 = +fDish.price.slice(0, -1);
+    const price2 = +sDish.price.slice(0, -1);
+    average = +average.slice(0, -1);
+    if (price1 + price2 < average) {
+        return 'Цена ниже средней';
+    } else {
+        return 'Цена выше средней';
     }
-
-    return myFunction;
 }
 
-debugger
-const increment = createCounter();
-const c1 = increment(); debugger //1
-const c2 = increment(); debugger //2
-const c3 = increment(); debugger //3
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
 
-console.log(c1, c2, c3);
+function transferWaitors(data) {
+    const copy = JSON.parse(JSON.stringify(data));
 
-{
-    let msg = "Hello";
+    copy.waitors[0] = {name: 'Mike', age: 32};
+    return copy;
 }
 
-console.log(msg); //Error!
-
-
-for(let i = 0; i < 9; i++) {
-    for (let j = 0; j < 9; j++) {
-        let num = 3;
-    }
-
-    console.log(num); //Error!
-}
-
-
-
+transferWaitors(restorantData);
