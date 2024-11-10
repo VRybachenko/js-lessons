@@ -1,51 +1,45 @@
 'use strict';
 
-const box = document.getElementById("box"),
-    btns = document.getElementsByTagName('button'),
-    circles = document.getElementsByClassName('circle'),
-    wrapper = document.querySelector('.wrapper'),
-    hearts = wrapper.querySelectorAll('.heart'),
-    oneHeart = wrapper.querySelector('.heart');
+const //btn = document.querySelector('button'),
+    overlay = document.querySelector('.overlay'),
+    btns = document.querySelectorAll('button');
 
+// btn.onclick = function(){
+//     alert('Click');
+// };
 
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px';
+// btn.addEventListener('click', () => {
+//     alert('Second Click');
+// })
 
-box.style.cssText = 'background-color: blue; width: 500px';
+// btn.addEventListener('mouseenter', (e) => {
+//     console.log(e.target);
+//     e.target.remove();
+//     //console.log('Hover');
+// })
 
-btns[1].style.borderRadius = "100%";
-circles[0].style.backgroundColor = 'red';
+//let i = 0;
+const deleteElement = (e) => {
+    //e.target.remove();
+    console.log(e.currentTarget);
+    console.log(e.type);
+    // i++;
+    // if(i == 1) {
+    //     btn.removeEventListener('click', deleteElement);
+    // }
+};
 
-// for(let i = 0; i < hearts.length; i++) {
-//     hearts[i].style.backgroundColor = 'blue';
-// }
+// btn.addEventListener('click', deleteElement);
+// overlay.addEventListener('click', deleteElement);
 
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+btns.forEach(btn => {
+    btn.addEventListener('click', deleteElement, {once: true});
 })
 
-const div = document.createElement('div');
-//const text = document.createTextNode('Hello World!');
+const link = document.querySelector('a');
+link.addEventListener('click', (event) => {
+    event.preventDefault();
 
-div.classList.add('black');
+    console.log(event.target)
+});
 
-wrapper.append(div);
-// wrapper.appendChild(div);
-
-//wrapper.prepend(div);
-
-// hearts[0].before(div);
-// hearts[0].after(div);
-
-// wrapper.insertBefore(div, hearts[2])
-
-// circles[0].remove();
-// wrapper.removeChild(hearts[1]);
-
- hearts[0].replaceWith(circles[0]);
-// wrapper.replaceChild(circles[0], hearts[0]);
-
-div.innerHTML = "<h1>>Hello World</h1>>";
-div.insertAdjacentHTML('afterend', '<h2>Hello</h2>');
-
-// div.textContent = "Hello";
