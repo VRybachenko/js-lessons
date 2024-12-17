@@ -1,100 +1,37 @@
 'use strict';
 
-// function pow(x, n) {
-//     let result = 1;
-//
-//     for (let i = 1; i < n; i++) {
-//         result *= x;
-//     }
-//
-//     return result;
-// }
-
-// function pow(x, n) {
-//     if (n === 1) {
-//         return x;
-//     } else {
-//         return x * pow(x, n - 1)
-//     }
-// }
-
-Math.pow(2, 2)
-
-let students = {
-    js: [{
-        name: 'John',
-        progress: 100
-    }, {
-        name: 'Ivan',
-        progress: 60
-    }],
-    html: {
-        basic: [{
-            name: 'Peter',
-            progress: 20
-        }, {
-            name: 'Ann',
-            progress: 18
-        }],
-        pro: [{
-            name: 'Sam',
-            progress: 10
-        }],
-        semi: {
-            students: [{
-                name: 'Test',
-                progress: 100
-            }]
-        }
-    }
-};
-
-function getTotalProgressByIteration(data) {
-    let total = 0;
-    let students = 0;
-
-    for (let course of Object.values(data)) {
-        if (Array.isArray(course)) {
-            students += course.length;
-
-            for (let i = 0; i < course.length; i++) {
-                total += course[i].progress;
-            }
-        } else {
-            for (let subCourse of Object.values(course)) {
-                students += subCourse.length;
-                for (let i = 0; i < subCourse.length; i++) {
-                    total += subCourse[i].progress;
-                }
-            }
-        }
-    }
-
-    return total / students;
-}
-
-//console.log(getTotalProgressByIteration(students));
+// touchstart - спрацьовує, коли палець торкається елемента.
+// touchmove - спрацьовує, коли палець рухається по екрану (після touchstart).
+// touchend - спрацьовує, коли палець піднімається (торкання завершується).
+// touchenter - спрацьовує, коли палець заходить на межі елемента.
+// touchleave - спрацьовує, коли палець виходить за межі елемента.
+// touchcancel - спрацьовує, коли подія торкання скасовується (наприклад, через системне переривання).
 
 
-function getTotalProgressByRecursion(data) {
-    if (Array.isArray(data)) {
-        let total = 0;
+window.addEventListener('DOMContentLoaded', () => {
+    const box = document.querySelector('.box');
 
-        for (let i = 0; i < data.length; i++) {
-            total += data[i].progress;
-        }
+    box.addEventListener('touchstart', (e) => {
+        e.preventDefault();
 
-        return [total, data.length];
-    } else {
-        let total = [0, 0];
-        for (let subData of Object.values(data)) {
-            const sabDataArr = getTotalProgressByRecursion(subData);
-            total[0] += sabDataArr[0];
-            total[1] += sabDataArr[1];
-        }
-        return total;
-    }
-}
+        console.log('Start');
+        console.log(e.targetTouches)
+    })
 
-const result = getTotalProgressByRecursion(students);
-console.log(result[0] / result[1]);
+    box.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+
+        //console.log('Move');
+        console.log(e.targetTouches[0].pageX); // Виводить координату X першого дотику відносно сторінки.
+    })
+
+    box.addEventListener('touchend', (e) => {
+        e.preventDefault();
+
+        console.log('End');
+    })
+});
+
+// touches - масив усіх пальців, що наразі торкаються екрана.
+// targetTouches - масив пальців, що торкаються конкретного елемента (на якому спрацювала подія).
+// changedTouches - масив пальців, які змінили свій стан під час події (наприклад, додано або прибрано дотик).
