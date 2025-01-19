@@ -1,33 +1,39 @@
 'use strict';
 
-let id = Symbol("id");
-const obj = {
-    'name': 'Test',
-    [id]: 1,
-    getId: function () {
-        return this[id];
+const birthday = Symbol('birthday');
+
+const user = {
+    name: 'Alex',
+    surname: 'Smith',
+    [birthday] : '18.10.19993',
+    //birthday: '20/04/1993',
+    showMyPublicData: function () {
+        console.log(`${this.name} ${this.surname}`);
     }
 }
-
-// let id = Symbol("id");
-// let id2 = Symbol("id");
-// console.log(id == id2);
+// Object.defineProperty(user, 'birthday', {value: prompt('Data?'),
+//     enumerable: true, configurable: true});
 //
-// obj[id] = 1;
+// console.log(Object.getOwnPropertyDescriptor(user, 'birthday'));
 
-console.log(Object.getOwnPropertySymbols(obj));
-console.log(obj[Object.getOwnPropertySymbols(obj)[0]]);
+//console.log(Object.getOwnPropertyDescriptor(Math, 'PI'));
+Object.defineProperty(user, 'showMyPublicData', {enumerable: false})
+
+for (const key in user) {console.log(key)}
+console.log(Object.getOwnPropertyDescriptor(user, birthday));
+
+Object.defineProperties(user, {
+    name: {writable: false},
+    surname: {writable: false}
+})
+
+//Object.defineProperty(user, 'name', {writable: false});
+// //user.name = 'test';
+//
+// Object.defineProperty(user, 'gender', {value: 'male'});
+// console.log(Object.getOwnPropertyDescriptor(user, 'gender'));
 
 
-// for (let value in obj) console.log(value);
-
-const myAwesomeDB = {
-    movies: [],
-    actors: [],
-    [Symbol.for('id')]: 123
-}
-
-myAwesomeDB.id = '312312312';
-
-console.log(myAwesomeDB[Symbol.for('id')]);
-console.log(myAwesomeDB);
+// writable
+// enumerable
+// configurable
