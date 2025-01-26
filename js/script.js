@@ -1,39 +1,61 @@
 'use strict';
 
-const birthday = Symbol('birthday');
-
 const user = {
     name: 'Alex',
     surname: 'Smith',
-    [birthday] : '18.10.19993',
-    //birthday: '20/04/1993',
+    birthday: '20/04/1993',
     showMyPublicData: function () {
         console.log(`${this.name} ${this.surname}`);
     }
 }
-// Object.defineProperty(user, 'birthday', {value: prompt('Data?'),
-//     enumerable: true, configurable: true});
+
+// for(const key of user) {
+//     console.log(user[key]);
+// }
+
+const arr = ['b', 'a', 'c'];
+Array.prototype.someMethod = function () {
+};
+
+console.dir(arr);
+
+for (const key of arr) {
+    console.log(key);
+}
+
+// const str = 'string';
 //
-// console.log(Object.getOwnPropertyDescriptor(user, 'birthday'));
+// for(const key in str) {
+//     console.log(str[key]);
+// }
 
-//console.log(Object.getOwnPropertyDescriptor(Math, 'PI'));
-Object.defineProperty(user, 'showMyPublicData', {enumerable: false})
+const salaries = {
+    josh: 500,
+    ivan: 1000,
+    ann: 5000,
+    sayHello: function () {
+        console.log('Hello');
+    }
+}
 
-for (const key in user) {console.log(key)}
-console.log(Object.getOwnPropertyDescriptor(user, birthday));
+salaries[Symbol.iterator] = function () {
+    return {
+        current: this.josh,
+        last: this.ann,
+        next() {
+            if (this.current < this.last) {
+                this.current = this.current + 500;
+                return {done: false, value: this.current};
+            } else {
+                return {done: true}
+            }
+        }
+    }
+}
 
-Object.defineProperties(user, {
-    name: {writable: false},
-    surname: {writable: false}
-})
+const iterator = salaries[Symbol.iterator]();
+console.log(iterator.next())
 
-//Object.defineProperty(user, 'name', {writable: false});
-// //user.name = 'test';
-//
-// Object.defineProperty(user, 'gender', {value: 'male'});
-// console.log(Object.getOwnPropertyDescriptor(user, 'gender'));
-
-
-// writable
-// enumerable
-// configurable
+for(let res of salaries) {
+    console.log(res);
+}
