@@ -1,16 +1,48 @@
 'use strict';
 
-// const bigint = 12223233323232323233232323232323232323232323n;
-// const sameBigint = BigInt(12223233323232323233232323232323232323232323);
+const btns = document.querySelectorAll('button'),
+    wrapper = document.querySelector('.btn-block');
 
-// console.log(typeof (bigint));
-// console.log(5n/2n);
+// console.log(btns[0].classList.length);
+// console.log(btns[0].classList.item(1));
+// console.log(btns[1].classList.add('red'));
+// console.log(btns[0].classList.remove('blue'));
+// console.log(btns[0].classList.toggle('blue'));
 
-let bigint = 1n;
-let number = 2;
+// if(btns[1].classList.contains('red')) {
+//     console.log('red');
+// }
 
-console.log(bigint + BigInt(number));
-console.log(Number(bigint) + number);
+btns[0].addEventListener('click', () => {
+    // if (!btns[1].classList.contains('red')) {
+    //     btns[1].classList.add('red');
+    // } else {
+    //     btns[1].classList.remove('red');
+    // }
 
+    btns[1].classList.toggle('red');
+});
 
+// console.log(btns[0].className);
 
+// wrapper.addEventListener('click', (event) => {
+//     if(event.target && event.target.tagName == "BUTTON") {
+//         console.log("Hello");
+//     }
+// });
+
+wrapper.addEventListener('click', (event) => {
+    if (event.target && event.target.matches("button.red")) {
+        console.log("Hello");
+    }
+});
+
+// btns.forEach(btn => {
+//     btn.addEventListener('click', () => {
+//         console.log("Hello");
+//     })
+// })
+
+const btn = document.createElement('button');
+btn.classList.add('red');
+wrapper.append(btn);
