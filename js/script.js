@@ -5,7 +5,9 @@ const btns = document.querySelectorAll('button'),
 
 // console.log(btns[0].classList.length);
 // console.log(btns[0].classList.item(1));
-// console.log(btns[1].classList.add('red'));
+console.log(btns[1].classList.add('green'));
+console.log(btns[1].classList.remove('green'));
+console.log(btns[1].classList.toggle('green'));
 // console.log(btns[0].classList.remove('blue'));
 // console.log(btns[0].classList.toggle('blue'));
 
@@ -16,7 +18,7 @@ const btns = document.querySelectorAll('button'),
 btns[0].addEventListener('click', () => {
     // if (!btns[1].classList.contains('red')) {
     //     btns[1].classList.add('red');
-    // } else {
+    // } else {а
     //     btns[1].classList.remove('red');
     // }
 
