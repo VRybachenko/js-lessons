@@ -1,50 +1,39 @@
 'use strict';
 
-const btns = document.querySelectorAll('button'),
-    wrapper = document.querySelector('.btn-block');
+window.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tabheader__item'),
+        tabsContent = document.querySelectorAll('.tabcontent'),
+        tabsParent = document.querySelector('.tabheader__items');
 
-// console.log(btns[0].classList.length);
-// console.log(btns[0].classList.item(1));
-console.log(btns[1].classList.add('green'));
-console.log(btns[1].classList.remove('green'));
-console.log(btns[1].classList.toggle('green'));
-// console.log(btns[0].classList.remove('blue'));
-// console.log(btns[0].classList.toggle('blue'));
+    function hideTapContent() {
+        tabsContent.forEach(item => {
+            item.style.display = 'none';
+        });
 
-// if(btns[1].classList.contains('red')) {
-//     console.log('red');
-// }
-
-btns[0].addEventListener('click', () => {
-    // if (!btns[1].classList.contains('red')) {
-    //     btns[1].classList.add('red');
-    // } else {а
-    //     btns[1].classList.remove('red');
-    // }
-
-    btns[1].classList.toggle('red');
-});
-
-// console.log(btns[0].className);
-
-// wrapper.addEventListener('click', (event) => {
-//     if(event.target && event.target.tagName == "BUTTON") {
-//         console.log("Hello");
-//     }
-// });
-
-wrapper.addEventListener('click', (event) => {
-    if (event.target && event.target.matches("button.red")) {
-        console.log("Hello");
+        tabs.forEach(item => {
+            item.classList.remove('tabheader__item_active');
+        })
     }
+
+    function showTapContent(i = 0) {
+        tabsContent[i].style.display = 'block';
+        tabs[i].classList.add('tabheader__item_active');
+    }
+
+    hideTapContent();
+    showTapContent();
+
+    tabsParent.addEventListener('click', (event) => {
+        const target = event.target;
+
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    hideTapContent();
+                    showTapContent(i);
+                }
+            });
+        }
+    });
 });
 
-// btns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         console.log("Hello");
-//     })
-// })
-
-const btn = document.createElement('button');
-btn.classList.add('red');
-wrapper.append(btn);
