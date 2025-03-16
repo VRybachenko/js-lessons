@@ -1,41 +1,45 @@
 'use strict';
 
 const btn = document.querySelector('.btn');
-let timerId,
+let timerID,
     i = 0;
 
 function myAnimation() {
-    const elem = document.querySelector('.box');
-    let pos = 0;
+   const element = document.querySelector('.box');
+   let pos = 0;
 
-    const id = setInterval(frame, 10);
-    function frame() {
-        if(pos == 300) {
-            clearInterval(id);
-        } else {
-            pos++;
-            elem.style.top = pos + "px";
-            elem.style.left = pos + 'px';
-        }
-    }
+   const id = setInterval(frame, 10);
+   function frame() {
+       if(pos == 300) {
+           clearInterval(id);
+       } else {
+           pos++;
+           element.style.top = pos + "px";
+           element.style.left = pos + "px";
+       }
+   }
 }
 
-btn.addEventListener('click', myAnimation);
 
-// btn.addEventListener('click', () => {
-//     // const timerId = setTimeout(logger, 2000);
-//     timerId = setInterval(logger, 500);
-// });
+btn.addEventListener('click', myAnimation);
+//
+// // const timerID = setTimeout(function (text) {
+// //     console.log(text)
+// // }, 2000, "Hello Bro!")
+//
 //
 // function logger() {
-//     if(i === 3) {
-//         clearInterval(timerId);
+//     if (i === 3) {
+//         clearInterval(timerID);
 //     }
-//     console.log('text');
+//     console.log("Hello Bro!");
 //     i++;
 // }
-
-// let id = setTimeout(function log(){
-//     console.log("Hello");
+//
+// let id = setTimeout(function log() {
+//     console.log("Hello Vadym!");
 //     id = setTimeout(log, 500);
 // }, 500);
+
+
+
