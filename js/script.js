@@ -1,45 +1,63 @@
 'use strict';
 
-const btn = document.querySelector('.btn');
-let timerID,
-    i = 0;
+// let user = {name: "Vadym"};
 
-function myAnimation() {
-   const element = document.querySelector('.box');
-   let pos = 0;
+//const arr = [user];
+// let map = new Map();
+// let map = new WeakMap();
+// map.set(user, "data");
+//
+// user = null;
 
-   const id = setInterval(frame, 10);
-   function frame() {
-       if(pos == 300) {
-           clearInterval(id);
-       } else {
-           pos++;
-           element.style.top = pos + "px";
-           element.style.left = pos + "px";
-       }
-   }
+// console.log(user);
+//console.log(arr[0]);
+// console.log(map.keys());
+// console.log(map.has(user));
+// console.log(map);
+
+/*
+let cache = new WeakMap();
+
+function cashUser(user) {
+    if(!cache.has(user)) {
+        cache.set(user, Date.now());
+    }
+    return cache.get(user);
 }
 
+let lena = {name: "Elena"};
+let alex = {name: "Alex"};
 
-btn.addEventListener('click', myAnimation);
-//
-// // const timerID = setTimeout(function (text) {
-// //     console.log(text)
-// // }, 2000, "Hello Bro!")
-//
-//
-// function logger() {
-//     if (i === 3) {
-//         clearInterval(timerID);
-//     }
-//     console.log("Hello Bro!");
-//     i++;
-// }
-//
-// let id = setTimeout(function log() {
-//     console.log("Hello Vadym!");
-//     id = setTimeout(log, 500);
-// }, 500);
+cashUser(lena);
+cashUser(alex);
+
+lena = null;
+
+console.log(cache.has(lena));
+console.log(cache.has(alex));
+ */
+
+
+//WeekSet
+//add, has, delete
+
+let message = [
+    {text: "Hello", from: "John"},
+    {text: "Hello World", from: "Mike"},
+    {text: "Hello Bob", from: "Aragorn"},
+    {text: "Hello Frodo", from: "Gendalf"}
+];
+
+let readMessages = new WeakSet();
+
+readMessages.add(message[0]);
+// readMessages.add(message[1]);
+
+readMessages.add(message[0]);
+message.shift();
+console.log(readMessages.has(message[0]));
+
+
 
 
 
