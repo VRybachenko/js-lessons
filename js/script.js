@@ -1,30 +1,42 @@
 'use strict';
 
-const now = new Date("2025-04-07");
-Date.parse("2025-04-07");
+window.addEventListener('DOMContentLoaded', () => {
+    //Tabs
+    const tabs = document.querySelectorAll('.tabheader__item'),
+        tabsContent = document.querySelectorAll('.tabcontent'),
+        tabsParent = document.querySelector('.tabheader__items');
 
-console.log(now.setHours(40));
-console.log(now);
+    function hideTapContent() {
+        tabsContent.forEach(item => {
+            item.style.display = 'none';
+        });
 
-/*
-console.log(now.getFullYear());
-console.log(now.getMonth());
-console.log(now.getDate());
-console.log(now.getDay());
-console.log(now.getUTCHours());
-*/
+        tabs.forEach(item => {
+            item.classList.remove('tabheader__item_active');
+        })
+    }
 
-// console.log(now.getTimezoneOffset())
-// console.log(now.getTime())
+    function showTapContent(i = 0) {
+        tabsContent[i].style.display = 'block';
+        tabs[i].classList.add('tabheader__item_active');
+    }
 
+    hideTapContent();
+    showTapContent();
 
-let start = new Date();
+    tabsParent.addEventListener('click', (event) => {
+        const target = event.target;
 
-for (let i = 0; i < 100000; i++) {
-    let some = i ** 3;
-}
+        if (target && target.classList.contains('tabheader__item')) {
+            tabs.forEach((item, i) => {
+                if (target == item) {
+                    hideTapContent();
+                    showTapContent(i);
+                }
+            });
+        }
+    });
 
-let end = new Date();
+    //Timer
 
-alert(`Цикл отработал за ${end - start} миллисекунд`);
-
+});
