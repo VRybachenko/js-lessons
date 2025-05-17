@@ -714,3 +714,11 @@ a {
     width: 280px;
     margin: 0 auto
 }
+
+.modal.show {
+    display: block;
+}
+
+.modal.hide {
+    display: none;
+}
